@@ -61,3 +61,7 @@ $ bash vim_locker.sh -h
 
 ## Credits
 Kent 'picat' Gruber
+
+#### Special Thanks
+
+Wanted to give a shotout to [zmallen](https://github.com/zmallen) for some inspriation from his [LoLLocker](https://github.com/zmallen/lollocker). See you at ISTS this year? ;)
