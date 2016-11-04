@@ -7,6 +7,7 @@ TODO:
 * Test HOST option thorooghly.
 * Probably spelling errors.
 * Stuff.
+* Oh, and a decrypt option would be nice, huh? :)
 
 ## Options
 
