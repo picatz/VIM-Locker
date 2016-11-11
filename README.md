@@ -2,10 +2,14 @@
 
 Did you know vim can encrypt your files?... I didn't either! Once I found out, I knew I had weaponize it into a cryptolocker. So I did that.
 
+## Testing support for Vi & Vim
+
+Because sometimes you don't have vim. :(
+
 TODO: 
 * Test all options thoroughly.
-* Test HOST option thorooghly.
-* Probably spelling errors.
+* Test HOST option thoroughly.
+* Probably spelling errors. Lots of them I bet.
 * Stuff.
 * Oh, and a decrypt option would be nice, huh? :)
 

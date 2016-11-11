@@ -26,6 +26,15 @@ help_menu() {
   "
 }
 
+# Detect vim or vi 
+if [ which vim ]; then
+  editor_path=$(which vim)
+elif [ which vi ]; then
+  editor_path=$(which vi)
+else
+  echo "Error. Neither Vi or Vim are avaialable to decrypt files :("
+fi
+
 # If not arguments are provided, then do ahead
 # and default to a nice little help menu.
 if [ $# -eq 0 ]; then
@@ -46,7 +55,7 @@ log_given=false
 # version() provides a simple means of checking
 # the version of the application.
 function version() {
-echo "Version 1.0"
+  echo "Version 1.0"
 }
 
 function parseOpts() {
@@ -180,7 +189,7 @@ do
     if $log_given; then
       echo "Encryption:'$encryption' Pass:'$passphrase'  File:'$file'" >> $log
     fi
-    vim --cmd "set key=$passphrase" --cmd "set cm=$encryption" -c wq $file 
+    $($editor_path --cmd "set key=$passphrase" --cmd "set cm=$encryption" -c wq $file)
   else
     echo "FOUND MATCH : $file"
   fi
